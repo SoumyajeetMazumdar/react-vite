@@ -1,12 +1,14 @@
 // import React from "react";
-import ReactDOM from "react-dom/client";
+// import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import "./App.css";
 
-const root = ReactDOM.createRoot(document.querySelector("#root"));
-root.render(
-  <>
-    <Header />
-    <Main />
-  </>
-);
+export default function App() {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
+}
