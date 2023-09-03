@@ -1,15 +1,18 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import reactLogo from "../assets/react.svg";
+import profilePic from "../assets/profile.jpg";
 
 function Header() {
   return (
-    <nav className="nav">
-      <img src={reactLogo} alt="" />
-      <h3>ReactFacts</h3>
+    <header className="header">
+      <img className="profile-pic" src={profilePic} alt="" />
 
-      <h4>React Course - Project 1</h4>
-    </nav>
+      <h1>Laura Smith</h1>
+      <h3>Assitant Professor</h3>
+      <p>Hi, I am Laura and I teach computer sciene at Yale University.</p>
+      <button className="email-btn">Email</button>
+      <button className="linkedin-btn">Linkedin</button>
+    </header>
   );
 }
 export default Header;

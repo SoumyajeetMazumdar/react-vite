@@ -3,7 +3,7 @@ import React from "react";
 
 const Main = () => {
   return (
-    <section className="main-section">
+    <section className="main">
       <h1>Fun Facts about React</h1>
       <ul>
         <li>Was first released in 2013</li>

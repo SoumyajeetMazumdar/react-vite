@@ -1,71 +1,70 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter");
-
 * {
-  font-family: "Inter";
   box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   margin: 0;
-  padding: 0;
+  /* padding: 0; */
 }
 
 body,
 html {
   width: 100%;
-  height: 100%;
+  margin: 0;
 
-  background-color: rgb(34, 38, 51);
+  background-color: rgb(60, 60, 96);
 }
 
-#root {
-  /* padding: 20px; */
-}
+.container {
+  width: 350px;
+  margin: 30px auto;
+  margin-bottom: 0;
 
-.nav {
-  display: flex;
-  gap: 20px;
-
-  justify-content: center;
-  align-items: center;
-
+  background-color: rgb(35, 35, 57);
   color: white;
-  background: rgb(23, 30, 51);
 
-  padding: 20px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.nav h3 {
-  margin-right: auto;
-  color: rgb(68, 205, 250);
-
-  font-size: 22.5px;
+.profile-pic {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-.nav h4 {
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0.5em;
   font-weight: 400;
 }
 
-.main-section {
+.header h3 {
+  margin: 0.5em;
+
+  font-size: 1rem;
+  font-weight: 500;
+  /* text-transform: uppercase; */
+  color: goldenrod;
+}
+
+button {
+  margin: 1em 0em;
+
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+}
+.email-btn {
+  margin-right: 50px;
+}
+
+.linkedin-btn {
+  background: rgb(1, 165, 220);
   color: white;
-
-  background: url(./assets/react-icon-large.png);
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
+  padding: 0.5em 1em;
 }
-
-.main-section > h1 {
-  margin: 2em 1em 1em 1em;
-  font-size: 2.5rem;
-}
-
-.main-section ul {
-  margin-left: 5em;
-}
-
-.main-section li {
-  margin: 1em 0;
-}
-
-.main-section li::marker {
-  color: rgb(68, 205, 250);
-  font-size: 1.5rem;
+.main {
+  opacity: 0;
 }
