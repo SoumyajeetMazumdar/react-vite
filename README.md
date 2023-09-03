@@ -1,8 +1,13 @@
-# React + Vite
+# Simple Page structured using react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+this is to teach the basics of creating a project using react(and vite).
 
-Currently, two official plugins are available:
+1. the React components of the webpage are in the folder called components
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. icons and pictures for the webapp are saved assets folder, and imported into js as and when required
+
+3. index.html file contains the basic rendering structure, and runs the file
+
+4. app.jsx contains the high-level breakdown of the app where the components are imported and added
+
+5. app.css contains all the styling added to the app (via classes only)
