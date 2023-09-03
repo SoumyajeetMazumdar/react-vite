@@ -4,7 +4,7 @@ import reactLogo from "../assets/react.svg";
 
 function Header() {
   return (
-    <nav>
+    <nav className="nav">
       <img src={reactLogo} alt="" />
       <h3>ReactFacts</h3>
 
