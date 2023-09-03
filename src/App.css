@@ -12,7 +12,7 @@ html {
   width: 100%;
   height: 100%;
 
-  background-color: rgb(65, 73, 100);
+  background-color: rgb(34, 38, 51);
 }
 
 #root {
@@ -27,7 +27,7 @@ html {
   align-items: center;
 
   color: white;
-  background: rgb(46, 52, 72);
+  background: rgb(23, 30, 51);
 
   padding: 20px;
 }
@@ -41,4 +41,31 @@ html {
 
 .nav h4 {
   font-weight: 400;
+}
+
+.main-section {
+  color: white;
+
+  background: url(./assets/react-icon-large.png);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: center;
+}
+
+.main-section > h1 {
+  margin: 2em 1em 1em 1em;
+  font-size: 2.5rem;
+}
+
+.main-section ul {
+  margin-left: 5em;
+}
+
+.main-section li {
+  margin: 1em 0;
+}
+
+.main-section li::marker {
+  color: rgb(68, 205, 250);
+  font-size: 1.5rem;
 }
