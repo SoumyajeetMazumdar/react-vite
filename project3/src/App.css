@@ -107,6 +107,8 @@ header h5 {
 .display-meme {
   width: 100%;
   height: 300px;
+
+  background: rgb(249, 238, 249);
 }
 
 .display-meme img {

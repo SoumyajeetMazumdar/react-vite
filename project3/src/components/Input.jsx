@@ -3,16 +3,48 @@ import { useState } from "react";
 
 import memesdata from "/Users/soumy/Desktop/React/react-vite-git-repo/react-vite/project3/memesdata.js";
 
+/**
+ * Challenge: Update our state to save the meme-related
+ * data as an object called `meme`. It should have the
+ * following 3 properties:
+ * topText, bottomText, randomImage.
+ *
+ * The 2 text states can default to empty strings for now,
+ * amd randomImage should default to "http://i.imgflip.com/1bij.jpg"
+ *
+ * Next, create a new state variable called `allMemeImages`
+ * which will default to `memesData`, which we imported above
+ *
+ * Lastly, update the `getMemeImage` function and the markup
+ * to reflect our newly reformed state object and array in the
+ * correct way.
+ */
+
 function Input() {
   function handleClick() {
     const memeArr = memesdata.data.memes;
     let randindex = Math.floor(Math.random() * memeArr.length);
 
     let randmeme = memeArr[randindex];
-    setImgUrl(randmeme.url);
+    // setImgUrl(randmeme.url);
+
+    setMeme((prev) => {
+      return {
+        topText: prev.topText,
+        bottomText: prev.bottomText,
+        url: randmeme.url,
+      };
+    });
+
+    console.log(meme.topText, meme.bottomText);
   }
 
-  const [imgUrl, setImgUrl] = useState("");
+  // const [imgUrl, setImgUrl] = useState("");
+  const [meme, setMeme] = useState({
+    topText: document.querySelector("#input-1").value,
+    bottomText: document.querySelector("#input-2").value,
+    url: "",
+  });
 
   return (
     <>
@@ -21,14 +53,14 @@ function Input() {
           <input
             type="text"
             name="input-1"
-            id=""
+            id="input-1"
             className="input-box"
             placeholder="Enter here"
           />
           <input
             type="text"
             name="input-2"
-            id=""
+            id="input-2"
             className="input-box"
             placeholder="enter there"
           />
@@ -47,7 +79,7 @@ function Input() {
         </form>
 
         <div className="display-meme">
-          <img src={imgUrl} alt="" />
+          <img src={meme.url} alt="" />
         </div>
       </div>
     </>
