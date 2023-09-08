@@ -1,18 +1,18 @@
 // import React from "react";
+import { useState } from "react";
+
 import memesdata from "/Users/soumy/Desktop/React/react-vite-git-repo/react-vite/project3/memesdata.js";
 
 function Input() {
-  let url; // to hold the img url
-
   function handleClick() {
-    // window.alert("Doggo");
     const memeArr = memesdata.data.memes;
     let randindex = Math.floor(Math.random() * memeArr.length);
 
     let randmeme = memeArr[randindex];
-    console.log(randmeme.id, randmeme.name);
-    url = randmeme.url;
+    setImgUrl(randmeme.url);
   }
+
+  const [imgUrl, setImgUrl] = useState("");
 
   return (
     <>
@@ -45,6 +45,10 @@ function Input() {
             />
           </button>
         </form>
+
+        <div className="display-meme">
+          <img src={imgUrl} alt="" />
+        </div>
       </div>
     </>
   );
