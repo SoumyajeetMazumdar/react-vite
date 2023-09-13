@@ -1,89 +1,65 @@
-// import React from "react";
-import { useState } from "react";
+import React from "react";
+import memesData from "./memesdata";
 
-import memesdata from "/Users/soumy/Desktop/React/react-vite-git-repo/react-vite/project3/memesdata.js";
+export default function Input() {
+  const [meme, setMeme] = React.useState({
+    topText: "",
+    bottomText: "",
+    randomImage: "http://i.imgflip.com/1bij.jpg",
+  });
+  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
 
-/**
- * Challenge: Update our state to save the meme-related
- * data as an object called `meme`. It should have the
- * following 3 properties:
- * topText, bottomText, randomImage.
- *
- * The 2 text states can default to empty strings for now,
- * amd randomImage should default to "http://i.imgflip.com/1bij.jpg"
- *
- * Next, create a new state variable called `allMemeImages`
- * which will default to `memesData`, which we imported above
- *
- * Lastly, update the `getMemeImage` function and the markup
- * to reflect our newly reformed state object and array in the
- * correct way.
- */
+  function getMemeImage() {
+    const memesArray = allMemeImages.data.memes;
+    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    const url = memesArray[randomNumber].url;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      randomImage: url,
+    }));
+  }
 
-function Input() {
-  function handleClick() {
-    const memeArr = memesdata.data.memes;
-    let randindex = Math.floor(Math.random() * memeArr.length);
-
-    let randmeme = memeArr[randindex];
-    // setImgUrl(randmeme.url);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
     setMeme((prev) => {
       return {
-        topText: prev.topText,
-        bottomText: prev.bottomText,
-        url: randmeme.url,
+        ...prev,
+        [name]: value,
       };
     });
+  };
 
-    console.log(meme.topText, meme.bottomText);
-  }
-
-  // const [imgUrl, setImgUrl] = useState("");
-  const [meme, setMeme] = useState({
-    topText: document.querySelector("#input-1").value,
-    bottomText: document.querySelector("#input-2").value,
-    url: "",
-  });
+  // console.log(meme);
 
   return (
-    <>
-      <div className="input">
-        <form className="input-container">
-          <input
-            type="text"
-            name="input-1"
-            id="input-1"
-            className="input-box"
-            placeholder="Enter here"
-          />
-          <input
-            type="text"
-            name="input-2"
-            id="input-2"
-            className="input-box"
-            placeholder="enter there"
-          />
-          <button
-            type="button"
-            className="meme--button linear-grad"
-            onClick={handleClick}
-          >
-            Get new meme images
-            <img
-              src="https://images.unsplash.com/photo-1682687220063-4742bd7fd538?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=1000&q=60"
-              //   src={url}
-              alt=""
-            />
-          </button>
-        </form>
-
-        <div className="display-meme">
-          <img src={meme.url} alt="" />
-        </div>
+    <main>
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Top text"
+          className="form--input"
+          name="topText"
+          value={meme.topText}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Bottom text"
+          className="form--input"
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleChange}
+        />
+        <button className="form--button" onClick={getMemeImage}>
+          Get a new meme image 🖼
+        </button>
       </div>
-    </>
+      <div className="meme">
+        <img src={meme.randomImage} className="meme--image" />
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
+    </main>
   );
 }
-
-export default Input;
