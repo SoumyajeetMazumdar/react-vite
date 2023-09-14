@@ -1,5 +1,5 @@
 import React from "react";
-import memesData from "./memesdata";
+// import memesData from "./memesdata";
 
 export default function Input() {
   const [meme, setMeme] = React.useState({
@@ -7,10 +7,11 @@ export default function Input() {
     bottomText: "",
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
+
+  const [allMemes, setAllMemes] = React.useState([]);
 
   function getMemeImage() {
-    const memesArray = allMemeImages.data.memes;
+    const memesArray = allMemes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[randomNumber].url;
     setMeme((prevMeme) => ({
@@ -30,7 +31,16 @@ export default function Input() {
     });
   };
 
-  // console.log(meme);
+  // fetches the meme data from an api and stores it in all memes array
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((res) => res.json())
+      .then((memeAPISet) => {
+        setAllMemes(memeAPISet.data.memes);
+      });
+  }, []);
+
+  // console.log(allMemes);
 
   return (
     <main>
@@ -52,7 +62,7 @@ export default function Input() {
           onChange={handleChange}
         />
         <button className="form--button" onClick={getMemeImage}>
-          Get a new meme image 🖼
+          Get a new meme image
         </button>
       </div>
       <div className="meme">
