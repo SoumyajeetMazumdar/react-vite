@@ -1,15 +1,18 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import reactLogo from "../assets/react.svg";
+import reacticon from "../images/react-icon-small.png";
 
-function Header() {
+export default function Navbar(props) {
   return (
-    <nav className="nav">
-      <img src={reactLogo} alt="" />
-      <h3>ReactFacts</h3>
+    <nav className={props.darkMode ? "dark" : ""}>
+      <img className="nav--logo_icon" src={reacticon} />
+      <h3 className="nav--logo_text">ReactFacts</h3>
 
-      <h4>React Course - Project 1</h4>
+      <div className="toggler">
+        <p className="toggler--light">Light</p>
+        <div className="toggler--slider" onClick={props.toggleDarkMode}>
+          <div className="toggler--slider--circle"></div>
+        </div>
+        <p className="toggler--dark">Dark</p>
+      </div>
     </nav>
   );
 }
-export default Header;
