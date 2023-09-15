@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
-import { data } from "./data";
+// import { data } from "./data";
 import Split from "react-split";
 import { nanoid } from "nanoid";
 
@@ -64,14 +64,21 @@ export default function App() {
     );
   }
 
-  // to find the current note in the notesArray
+  // to find the current note in the notesArray, (0th note as default)
+  const currentNote =
+    notes.find((note) => note.id === currentNoteId) || notes[0];
+
+  /* DEPRECATED : fn replaced by a variable above
+  
   function findCurrentNote() {
+    // 
     return (
       notes.find((note) => {
         return note.id === currentNoteId;
       }) || notes[0]
     );
-  }
+  } 
+  */
 
   return (
     <main>
@@ -81,13 +88,13 @@ export default function App() {
         <Split sizes={[30, 70]} direction="horizontal" className="split">
           <Sidebar
             notes={notes}
-            currentNote={findCurrentNote()}
+            currentNote={currentNote}
             setCurrentNoteId={setCurrentNoteId}
             newNote={createNewNote}
             deleteNote={deleteNote}
           />
           {currentNoteId && notes.length > 0 && (
-            <Editor currentNote={findCurrentNote()} updateNote={updateNote} />
+            <Editor currentNote={currentNote} updateNote={updateNote} />
           )}
         </Split>
       ) : (
