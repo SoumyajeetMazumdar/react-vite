@@ -1,7 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
+// need to import this for database access
+import { collection, getFireStore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,4 +14,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// connect to database
+// get the particular varible from the database
 const app = initializeApp(firebaseConfig);
+const db = getFireStore(app);
+
+const notesCollection = collection(db, "notes");
